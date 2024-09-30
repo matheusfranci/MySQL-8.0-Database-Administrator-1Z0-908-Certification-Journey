@@ -5,7 +5,7 @@ Este repositório é dedicado a documentar meu caminho de estudo para o exame de
 ## Study Plan
 Architecture
 
--Configure client connections to the server
+- Configure client connections to the server
 Understand how MySQL stores data
 Understand how InnoDB stores data and logs
 Configure buffers and caches
