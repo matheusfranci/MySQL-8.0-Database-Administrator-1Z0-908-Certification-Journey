@@ -3,7 +3,7 @@
 Este repositório é dedicado a documentar meu caminho de estudo para o exame de certificação MySQL 8.0 Database Administrator (1Z0-908). Vou compartilhar anotações, recursos e exercícios práticos conforme avanço pelos objetivos do exame.
 
 ## Study Plan
-*Architecture*
+***Architecture***
 
 - Configure client connections to the server
 - Understand how MySQL stores data
