@@ -14,7 +14,6 @@ C:\Users\usuario>scp C:\Users\usuario\Downloads\mysql-enterprise-9.0.1_el7_x86_6
 # Senha do usuário
 usuario@***.***.*.***'s password:
 mysql-enterprise-9.0.1_el7_x86_64_bundle.tar                                          100%  954MB  68.2MB/s   00:13
-bash```
 
 3. Realizar Unpack do tar importado para a VM:
 cd /home/usuario/
