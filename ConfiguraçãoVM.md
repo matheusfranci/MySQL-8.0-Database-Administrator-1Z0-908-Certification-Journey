@@ -1,20 +1,23 @@
-1- Sistema operacional
-NAME="Oracle Linux Server"
-VERSION="7.9"
-ID="ol"
-ID_LIKE="fedora"
-VARIANT="Server"
-VARIANT_ID="server"
-VERSION_ID="7.9"
-PRETTY_NAME="Oracle Linux Server 7.9"
-ANSI_COLOR="0;31"
-CPE_NAME="cpe:/o:oracle:linux:7:9:server"
-HOME_URL="https://linux.oracle.com/"
-BUG_REPORT_URL="https://bugzilla.oracle.com/"
-ORACLE_BUGZILLA_PRODUCT="Oracle Linux 7"
-ORACLE_BUGZILLA_PRODUCT_VERSION=7.9
-ORACLE_SUPPORT_PRODUCT="Oracle Linux"
-ORACLE_SUPPORT_PRODUCT_VERSION=7.9
+## 1. Sistema Operacional
+- **Nome:** Oracle Linux Server
+- **Versão:** 7.9
+- **ID:** ol
+- **ID_LIKE:** fedora
+- **Variante:** Server
+- **Variante ID:** server
+- **ID da Versão:** 7.9
+- **Nome Amigável:** Oracle Linux Server 7.9
+- **Cor ANSI:** 0;31
+- **CPE Nome:** cpe:/o:oracle:linux:7:9:server
+- **URL do Home:** [Oracle Linux](https://linux.oracle.com/)
+- **URL do Bug Report:** [Bugzilla Oracle](https://bugzilla.oracle.com/)
+- **Produto Bugzilla Oracle:** Oracle Linux 7
+- **Versão do Produto Bugzilla Oracle:** 7.9
+- **Produto de Suporte Oracle:** Oracle Linux
+- **Versão do Produto de Suporte Oracle:** 7.9
+
+## 2. CPU
+
 
 2- CPU
 Architecture:          x86_64
