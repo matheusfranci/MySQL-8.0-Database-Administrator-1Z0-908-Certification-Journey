@@ -6,11 +6,11 @@ Este repositório é dedicado a documentar meu caminho de estudo para o exame de
 Architecture
 
 - Configure client connections to the server
-Understand how MySQL stores data
-Understand how InnoDB stores data and logs
-Configure buffers and caches
-Understand and use the Data Dictionary
-Server Installation and Configuration
+- Understand how MySQL stores data
+- Understand how InnoDB stores data and logs
+- Configure buffers and caches
+- Understand and use the Data Dictionary
+- Server Installation and Configuration
 
 Install and use the MySQL server and client programs
 Identify the files and folders created during installation
