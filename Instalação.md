@@ -56,7 +56,7 @@ sudo yum install mysql-router-commercial
 sudo yum install mysql-shell-commercial
 ```
 
-***9. Inicie o serviço do Mysql
+***9. Inicie o serviço do Mysql***
 ```bash
 systemctl start mysqld
 ```
