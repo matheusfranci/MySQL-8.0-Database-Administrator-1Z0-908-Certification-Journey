@@ -5,7 +5,7 @@ sudo systemctl stop mysqld
 
 ***2- Antes do restore é preciso aplicar o log ao backup. Para isso, execute o seguinte comando:***
 ```bash
-mysqlbackup --user=root --password=230319Mf@ --host=localhost --backup-dir=/home/mat/backup/ apply-log
+mysqlbackup --user=root --password=******** --host=localhost --backup-dir=/home/mat/backup/ apply-log
 ```
 
 ***3- Apagar ou mover o diretório de dados antigo***
