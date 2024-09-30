@@ -3,13 +3,13 @@
 sudo systemctl stop mysqld
 ```
 
-```bash
 ***2- Apagar ou mover o diretório de dados antigo***
+```bash
 mv /var/lib/mysql /var/lib/mysql_old
 mkdir /var/lib/mysql
 ```
 
-***3- Aplicsndo log do backup full***
+***3- Aplicando log do backup full***
 ```bash
 mysqlbackup --backup-dir=/home/mat/backup_full/2024-09-30_11-22-33 --datadir=/var/lib/mysql apply-log
 ```
