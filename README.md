@@ -11,7 +11,7 @@ Este repositório é dedicado a documentar meu caminho de estudo para o exame de
 - Configure buffers and caches
 - Understand and use the Data Dictionary
 
-Server Installation and Configuration
+***Server Installation and Configuration***
 
 - Install and use the MySQL server and client programs
 - Identify the files and folders created during installation
@@ -21,7 +21,7 @@ Server Installation and Configuration
 - Configure MySQL variables
 - Launch multiple MySQL servers on the same host
   
-Security
+***Security***
 
 - Create user accounts and roles
 - Use authentication plug-ins
@@ -34,7 +34,7 @@ Security
 - Encrypt MySQL data
 - Configure MySQL Enterprise Firewall
   
-Monitoring and Maintenance
+***Monitoring and Maintenance***
 
 - Configure and view MySQL log files
 - Monitor MySQL processes and status
@@ -43,14 +43,14 @@ Monitoring and Maintenance
 - Monitor database growth and explain capacity planning
 - Troubleshoot problems with locked resources
   
-Query Optimization
+***Query Optimization***
 
 - Examine how MySQL optimizes queries
 - Analyze queries with MySQL Enterprise Monitor
 - Create indexes to improve server performance
 - Monitor and understand index statistics
   
-Backups and Recovery
+***Backups and Recovery***
 
 - Distinguish between the different types of backup
 - Implement a backup strategy
@@ -59,7 +59,7 @@ Backups and Recovery
 - Explain when and how to use raw file backups
 - Back up the binary log
   
-High Availability Techniques
+***High Availability Techniques***
 
 - Explain how replication provides high availability and scalability
 - Configure replication
