@@ -17,46 +17,40 @@
 - **Versão do Produto de Suporte Oracle:** 7.9
 
 ## 2. CPU
+- **Arquitetura:** x86_64
+- **Modos de operação da CPU:** 32-bit, 64-bit
+- **Ordem de bytes:** Little Endian
+- **Número de CPUs:** 4
+- **Lista de CPUs online:** 0-3
+- **Threads por núcleo:** 1
+- **Núcleos por soquete:** 4
+- **Soquetes:** 1
+- **Nós NUMA:** 1
+- **ID do fornecedor:** AuthenticAMD
+- **Família da CPU:** 25
+- **Modelo:** 33
+- **Nome do modelo:** AMD Ryzen 9 5950X 16-Core Processor
+- **Stepping:** 2
+- **MHz da CPU:** 3393.668
+- **BogoMIPS:** 6787.33
+- **Fornecedor do hypervisor:** KVM
+- **Tipo de virtualização:** full
+- **Cache L1d:** 32K
+- **Cache L1i:** 32K
+- **Cache L2:** 512K
+- **Cache L3:** 65536K
+- **CPUs do nó NUMA 0:** 0-3
 
+## 3. Memória RAM
+- **Memória Total:** 7.49263 GB
+- **Memória Livre:** 1.56308 GB
+- **Buffers:** 0.128311 GB
+- **Cache:** 4.99614 GB
 
-2- CPU
-Architecture:          x86_64
-CPU op-mode(s):        32-bit, 64-bit
-Byte Order:            Little Endian
-CPU(s):                4
-On-line CPU(s) list:   0-3
-Thread(s) per core:    1
-Core(s) per socket:    4
-Socket(s):             1
-NUMA node(s):          1
-Vendor ID:             AuthenticAMD
-CPU family:            25
-Model:                 33
-Model name:            AMD Ryzen 9 5950X 16-Core Processor
-Stepping:              2
-CPU MHz:               3393.668
-BogoMIPS:              6787.33
-Hypervisor vendor:     KVM
-Virtualization type:   full
-L1d cache:             32K
-L1i cache:             32K
-L2 cache:              512K
-L3 cache:              65536K
-NUMA node0 CPU(s):     0-3
+## 4. MySQL
+- **Versão:** 9.0.1-commercial
+- **Comentário da versão:** MySQL Enterprise Server - Commercial
+- **Máquina da versão compilada:** x86_64
+- **Sistema operacional da versão compilada:** Linux
+- **Zlib da versão compilada:** 1.2.13
 
-3- Memória RAM
-MemTotal:  7.49263 GB
-MemFree:   1.56308 GB
-Buffers:   0.128311 GB
-Cached:    4.99614 GB
-
-4- Mysql
-+-------------------------+--------------------------------------+
-| Variable_name           | Value                                |
-+-------------------------+--------------------------------------+
-| version                 | 9.0.1-commercial                     |
-| version_comment         | MySQL Enterprise Server - Commercial |
-| version_compile_machine | x86_64                               |
-| version_compile_os      | Linux                                |
-| version_compile_zlib    | 1.2.13                               |
-+-------------------------+--------------------------------------+
