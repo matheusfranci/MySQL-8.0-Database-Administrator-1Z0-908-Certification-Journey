@@ -29,11 +29,7 @@ O diretório `Backups and Recovery` contém os seguintes arquivos, cada um desti
   Documento que descreve o processo de restauração completa de um banco de dados a partir de um backup full, abordando:
   - Procedimento de restauração completa
 
-## Contribuições
-
-Sinta-se à vontade para contribuir com melhorias, correções ou adições a este repositório. Pull requests são bem-vindos!
 
 ## Contato
 
 Para dúvidas ou sugestões, entre em contato comigo através do GitHub ou pelo meu e-mail: dba.moreirasantos@gmail.com
-
