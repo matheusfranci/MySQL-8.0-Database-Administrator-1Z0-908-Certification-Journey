@@ -4,17 +4,18 @@ O diretório `Backups and Recovery` contém os seguintes arquivos, cada um desti
 
 - **`Dump&RestoreUtility.md`**  
   Documento que fornece uma visão geral das utilidades de dump e restore no MySQL, incluindo instruções e melhores práticas para utilizar essas ferramentas eficazmente.
+- Utilizando o utilitário mysqlsh
+- Backup & Restore com util.dumpInstance
 
 - **`Full&Incr.md`**  
   Este arquivo explora as diferenças entre backups completos e incrementais, abordando:
-  - Quando utilizar cada tipo de backup.
-  - Práticas recomendadas para implementar essas estratégias.
+  - Procedimento de backup full com validação
+  - Procedimento de backup incremental com validação
 
 - **`MysqlPump.md`**  
   Um documento que explica o uso do MySQL Pump, uma ferramenta para realizar backups e restaurações, incluindo:
-  - Como utilizar o MysqlPump para executar tarefas de backup de maneira eficiente.
-  - Comparação entre MysqlPump e outras ferramentas como mysqldump.
-
+  - Como utilizar o MysqlPump para executar tarefas de backup & restore.
+  
 - **`Mysqldump.md`**  
   Este arquivo fornece informações detalhadas sobre o comando `mysqldump`, incluindo:
   - Sintaxe e opções disponíveis.
@@ -23,12 +24,10 @@ O diretório `Backups and Recovery` contém os seguintes arquivos, cada um desti
 - **`RestauraçãoComIncremental.md`**  
   Um guia prático que detalha o processo de restauração de um banco de dados utilizando backups incrementais, incluindo:
   - Etapas necessárias para garantir uma restauração bem-sucedida.
-  - Dicas para verificar a integridade dos dados após a restauração.
 
 - **`RestauraçãoCompleta.md`**  
   Documento que descreve o processo de restauração completa de um banco de dados a partir de um backup full, abordando:
-  - Procedimentos a serem seguidos.
-  - Considerações a serem feitas antes de iniciar a restauração.
+  - Procedimento de restauração completa
 
 ## Contribuições
 
