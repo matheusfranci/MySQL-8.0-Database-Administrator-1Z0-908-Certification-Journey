@@ -90,3 +90,6 @@ mysql -u root -p --port=3307 --socket=/var/lib/mysql2/mysql.sock
 SHOW VARIABLES LIKE 'datadir';
 SHOW VARIABLES LIKE 'port';
 ```
+```bash
+systemctl status mysqld mysqld2
+```
