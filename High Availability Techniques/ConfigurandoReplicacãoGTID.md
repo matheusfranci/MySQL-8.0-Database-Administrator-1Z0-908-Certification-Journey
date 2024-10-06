@@ -1,4 +1,4 @@
-***No my.cnf do servidor master, adicione ou modifique as seguintes variáveis:***
+***No my.cnf do servidor, adicione ou modifique as seguintes variáveis(Source):***
 ```ini
 [mysqld]
 gtid_mode=ON
@@ -6,24 +6,24 @@ enforce_gtid_consistency=ON
 log_bin=binlog
 log_slave_updates=ON
 binlog_format=ROW
-server_id=1  # ou outro valor único para o servidor master
+server_id=1  # ou outro valor único para o servidor Source
 ```
 
-***Reinicie o servidor MySQL para aplicar as mudanças:***
+***Reinicie o servidor MySQL para aplicar as mudanças(Source):***
 ```bash
 sudo systemctl restart mysqld
 ```
 
-***Crie um usuário de replicação:***
+***Crie um usuário de replicação(Source):***
 ```SQL
 CREATE USER 'replica_gtid'@'%' IDENTIFIED BY '********';
 GRANT REPLICATION SLAVE ON *.* TO 'replica_gtid'@'%';
 ```
 
-***Bloqueie o master para que o estado do banco de dados seja consistente:***
+***Bloqueie para que o estado do banco de dados seja consistente(Source):***
 ```SQL
 SET @@GLOBAL.read_only = ON;
-SHOW MASTER STATUS; --OBS Na versão 9 usa-se o comando SHOW BINARY LOG STATUS;
+SHOW Source STATUS; --OBS Na versão 9 usa-se o comando SHOW BINARY LOG STATUS;
 ```
 
 ```log
@@ -35,12 +35,12 @@ mysql> SHOW BINARY LOG STATUS;
 +---------------+----------+--------------+------------------+----------------------------------------+
 ```
 
-***Faça umm backup do master***
+***Faça umm backup(Source):***
 ```bash
 mysqldump --all-databases --source-data=2 --single-transaction --flush-logs --routines --triggers --events -u root -p > backup.sql
 ```
 
-***Copie para a replica***
+***Copie para a replica(Source):***
 ```bash
 scp /user/backup.sql root@192.168.1.244:/user
 ```
@@ -50,7 +50,7 @@ scp /user/backup.sql root@192.168.1.244:/user
 mysql -u user -p < /user/backup.sql
 ```
 
-***No my.cnf do servidor replica, adicione ou modifique as seguintes variáveis:***
+***No my.cnf, adicione ou modifique as seguintes variáveis(Replica):***
 ```ini
 [mysqld]
 gtid_mode=ON
@@ -61,22 +61,22 @@ binlog_format=ROW
 server_id=2
 ```
 
-***Reinicie a instância de replica para aplicar as mudanças:***
+***Reinicie a instância para aplicar as mudanças(Replica):***
 ```bash
 sudo systemctl restart mysqld
 ```
 
-*** Pare ambas as instâncias ***
+*** Pare ambas as instâncias(Source e Replica):***
 ```bash
 systemctl stop mysqld
 ```
 
-***Reinicie ambos os servidores***
+***Reinicie ambos os servidores(Source e Replica):***
 ```bash
 reboot
 ```
 
-*** Ao retornar execute na instância de replica o comando:***
+*** Ao retornar execute na instância o comandos(Replica):***
 ```SQL
 CHANGE REPLICATION SOURCE TO
 SOURCE_HOST='192.168.1.254',
@@ -87,19 +87,19 @@ SOURCE_SSL = 1,
 SOURCE_AUTO_POSITION=1;
 ```
 
-*** Inicie a replicação***
+*** Inicie a replicaçãos(Replica):***
 ```SQL
 START REPLICA;
 ```
 
-***Observação***
+***Observaçãos(Replica):***
 ```log
 Caso apresente o erro abaixo, favor reiniciar a replica e executar os comandos novamente:
 2024-10-06T18:07:17.569179Z 9 [ERROR] [MY-010717] [Repl] Error reading replica worker configuration
 2024-10-06T18:07:17.569219Z 9 [ERROR] [MY-010418] [Repl] Error creating applier metadata: Failed to create the worker metadata repository structure.
 ```
 
-Solução em alguns casos:
+Solução em alguns casos(Replica):
 ```SQL
 RESET REPLICA;
 
@@ -112,14 +112,14 @@ SOURCE_SSL = 1,
 SOURCE_AUTO_POSITION=1;
 ```
 
-*** Retornando para read write
+*** Retornando para read writes(Source):
 ```SQL
 SET @@GLOBAL.read_only = OFF;
 ```
 
-*** Testando a replicação
+*** Testando a replicação(Source):
 
-No source crie um banco, uma tabela e insira registros
+Crie um banco, uma tabela e insira registros
 ```SQL
 CREATE DATABASE testdb;
 USE testdb;
@@ -127,14 +127,18 @@ CREATE TABLE test_table (id INT PRIMARY KEY, name VARCHAR(50));
 INSERT INTO test_table (id, name) VALUES (1, 'Teste');
 ```
 
-Na replica verifique se foi replicado
+Verifique se foi replicado(Replica):
 ```SQL
 USE testdb;
 SELECT * FROM test_table;
 ```
 
-Outra maneira é validando o hasg do gtid
+Outra maneira é validando o hasg do gtid(Source e Replica):
 ```SQL
 SHOW VARIABLES LIKE 'gtid_executed';
 ```
 No ambiente de teste, os valores precisam ser iguais. No entanto, em um ambiente produtivo, onde há um grande volume de transações por minuto, é natural que a replicação esteja atrasada. Isso é especialmente verdade se o servidor replica for subdimensionado, o que pode impactar as métricas de finanças operacionais (FinOps).
+
+***Links:***
+https://dev.mysql.com/doc/refman/8.4/en/replication-gtids-howto.html
+https://airbyte.com/blog/replicating-mysql-a-look-at-the-binlog-and-gtids
