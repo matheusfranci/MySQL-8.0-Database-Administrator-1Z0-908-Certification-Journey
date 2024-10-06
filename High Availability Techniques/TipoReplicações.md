@@ -30,7 +30,7 @@ binlog_format = ROW
 ```
 
 ### 3. Replicação híbrida (Mixed-Based Replication - MBR)
-Para configurar a replicação baseada em linhas, edite o arquivo de configuração:
+Para configurar a replicação híbrida, use a seguinte configuração no arquivo:
 
 ```bash
 binlog_format = MIXED
