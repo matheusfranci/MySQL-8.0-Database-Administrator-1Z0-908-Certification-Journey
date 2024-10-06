@@ -1,4 +1,4 @@
-***Criando e atribuindo o permissionamento correto aos arquivos e pasta criada (Master)***
+***Criando e atribuindo o permissionamento correto aos arquivos e pasta criada (Source)***
 ```bash
 mkdir /var/log/mysql/
 sudo chown -R mysql:mysql /var/log/mysql/
@@ -6,7 +6,7 @@ sudo touch /var/log/mysql/mysql-bin.log
 sudo chmod 660 /var/log/mysql/mysql-bin.log
 ```
 
-***Configurando o my.cnf (Master)***
+***Configurando o my.cnf (Source)***
 ```ini
 [mysqld]
 server-id = 1
@@ -14,19 +14,19 @@ log_bin = /var/log/mysql/mysql-bin.log
 binlog_do_db = nome_do_seu_banco_de_dados # Especifica o DB que será replicado
 ```
 
-***Reiniciando o serviço do mysql (Master)***
+***Reiniciando o serviço do mysql (Source)***
 ```bash
 sudo systemctl restart mysqld
 ```
 
-***Criação e atribuição de permissão para usuário de replicação (Master)***
+***Criação e atribuição de permissão para usuário de replicação (Source)***
 ```SQL
 CREATE USER 'replicador'@'%' IDENTIFIED BY '********';
 GRANT REPLICATION SLAVE ON *.* TO 'replicador'@'%';
 FLUSH PRIVILEGES;
 ```
 
-***Obtendo a posição do log primário (Master)***
+***Obtendo a posição do log primário (Source)***
 ```SQL
 SET GLOBAL read_only=ON; -- Travar as tabelas para garantir consistência
 SHOW VARIABLES LIKE '%read_only%'; -- Validar se está read only
@@ -35,12 +35,12 @@ FLUSH LOGS;
 SHOW MASTER STATUS; --OBS Na versão 9 usa-se o comando SHOW BINARY LOG STATUS;
 ```
 
-***Fazendo backup lógico (Master)***
+***Fazendo backup lógico (Source)***
 ```bash
 mysqldump -u adminuser -p --all-databases --master-data > dumpfile.sql
 ```
 
-***Copiando para a replica (Master)
+***Copiando para a replica (Source)
 ```bash
 scp /user/dumpfile.sql user@192.168.1.244:/user
 ```
@@ -69,7 +69,7 @@ relay_log = /var/log/mysql/mysql-relay-bin.log
 systemctl restart mysqld
 ```
 
-***Voltando para read write (Master)***
+***Voltando para read write (Source)***
 ```SQL
 SET GLOBAL read_only=OFF; -- Travar as tabelas para garantir consistência
 SHOW VARIABLES LIKE '%read_only%'; -- Validando
@@ -90,12 +90,12 @@ CHANGE REPLICATION SOURCE TO SOURCE_HOST = '192.168.1.254', -- IP do primário
 SHOW REPLICA STATUS\G
 ```
 
-***Validando a replicação (MASTER)***
+***Validando a replicação (Source)***
 ```SQL
 SHOW REPLICAS;
 ```
 
-***Testando a replicação (MASTER)***
+***Testando a replicação (Source)***
 -- Criação de tabela
 ```SQL
 CREATE TABLE test_replication (
@@ -126,7 +126,7 @@ DELIMITER ;
 CALL insert_test_data();
 ```
 
--- Teste com o select (Replica)
+-- Teste com o select (Source)
 ```SQL
 SELECT * FROM test_replication;
 ```
