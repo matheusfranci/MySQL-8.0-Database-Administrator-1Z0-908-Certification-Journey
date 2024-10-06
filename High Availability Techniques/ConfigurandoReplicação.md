@@ -79,7 +79,7 @@ SHOW VARIABLES LIKE '%read_only%'; -- Validando
 ```SQL
 CHANGE REPLICATION SOURCE TO SOURCE_HOST = '192.168.1.254', -- IP do primário
     SOURCE_USER = 'replicador', -- Usuário criado no primário
-    SOURCE_PASSWORD = '230319Mf@',
+    SOURCE_PASSWORD = '*********',
     SOURCE_LOG_FILE = 'mysql-bin.000023', -- Pega essa informação executando o comando SHOW BINARY LOG STATUS no primário, coluna File
     SOURCE_LOG_POS = 158, -- Pega essa informação executando o comando SHOW BINARY LOG STATUS no primário, coluna Position
 	SOURCE_SSL = 1;  -- Esta linha ativa o uso de SSL, é necessária caso o usuário use o plugin caching_sha2_password que é default no mysql 9
