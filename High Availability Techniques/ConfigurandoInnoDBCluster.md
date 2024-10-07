@@ -1,4 +1,4 @@
-***Habilite o gtid_mode, configure o enforce-gtid-consistency e o server_id no arquivo de configuração my.cnf***
+***Habilite o gtid_mode, configure o enforce-gtid-consistency e o server_id no arquivo de configuração my.cnf(primário)***
 ```ini
 [mysqld]
 gtid_mode=ON
@@ -6,12 +6,12 @@ enforce-gtid-consistency=ON
 server_id=1
 ```
 
-***Reinicie o a instância***
+***Reinicie a instância***
 ```bash
 systemctl restart mysqld
 ```
 
-***Criação e concessão de privilégios ao usuário da replicação
+***Criação e concessão de privilégios ao usuário da replicação(primário)***
 ```SQL
 CREATE USER 'clusteradmin'@'%' IDENTIFIED BY '********';
 GRANT ALL PRIVILEGES ON *.* TO 'clusteradmin'@'%';
@@ -23,27 +23,27 @@ GRANT ALTER, ALTER ROUTINE, CREATE, CREATE ROUTINE, CREATE TEMPORARY TABLES, CRE
 FLUSH PRIVILEGES;
 ```
 
-***Acesse o mysqlshell***
+***Acesse o mysqlshell(primário)***
 ```bash
 mysqlsh --uri clusteradmin@192.168.1.254:3306
 ```
 
-***Mude para o JavaScript Mode***
+***Mude para o JavaScript Mode(primário)***
 ```bash
 \js
 ```
 
-***Valide a configuração da instância***
+***Valide a configuração da instância(primário)***
 ```JS
 dba.checkInstanceConfiguration('clusteradmin@192.168.1.254:3306');
 ```
 
-***Crie o cluster***
+***Crie o cluster(primário)***
 ```JS
-var cluster = dba.createCluster('node_01');
+var cluster = dba.createCluster('cluster');
 ```
 
-***Conecte-se em outro nó e repita o procedimento adicionando os mesmos parâmetros no my.cnf alterando apenas o server_id
+***Conecte-se em outro nó e repita o procedimento adicionando os mesmos parâmetros no my.cnf alterando apenas o server_id(secundário)***
 ```ini
 [mysqld]
 gtid_mode=ON
@@ -52,16 +52,16 @@ server_id=2
 report_host = 192.168.1.244
 ```
 
-***Acesse o mysqlshell***
+***Acesse o mysqlshell(primário)***
 ```bash
 mysqlsh --uri clusteradmin@192.168.1.254:3306
 ```
 
-***Mude para o JavaScript Mode***
+***Mude para o JavaScript Mode(primário)***
 ```bash
 \js
 ```
-***Adicione a instancia 2 ao cluster
+***Adicione a instancia 2 ao cluster(primário)
 ```JS
 cluster.addInstance('clusteradmin@192.168.1.244:3306');
 ```
@@ -122,7 +122,7 @@ State recovery already finished for '192.168.1.244:3306'
 The instance '192.168.1.244:3306' was successfully added to the cluster.
 ```
 
-***Validando o funcionamento via query***
+***Validando o funcionamento via query(primário e secundário)***
 ```SQL
 SELECT 
     MEMBER_ID,
@@ -146,9 +146,3 @@ FROM
 
 ***Observações
 Os servidores precisam se resolver por nomes, edite o /etc/hosts
-
- 
-
-
-
-SET GLOBAL gtid_purged = '4b53b93e-82e5-11ef-b369-0800274dadb2:1-10:1-10,72dda909-842b-11ef-b57f-0800274dadb2:1-62,a4861187-8437-11ef-b19a-0800274dadb2:1-63';
