@@ -18,3 +18,6 @@ Você pode listar todos os plug-ins de autenticação disponíveis no MySQL com 
 ```sql
 SHOW PLUGINS;
 ```
+
+## Cada plugin possui um procedimento de instalação e uso amplamente documentado no link abaixo  
+https://dev.mysql.com/doc/refman/8.4/en/authentication-plugins.html
