@@ -55,3 +55,8 @@ connection_control_min_connection_delay=2000 #Configura o tempo máximo de bloqu
 SET PERSIST connection_control_failed_connections_threshold = 4;
 SET PERSIST connection_control_min_connection_delay = 2000;
 ```
+
+## Links de apoio
+https://dev.mysql.com/doc/refman/8.4/en/connection-control.html
+https://dev.mysql.com/doc/refman/8.4/en/connection-control-installation.html
+https://dev.mysql.com/doc/refman/8.4/en/connection-control-variables.html
