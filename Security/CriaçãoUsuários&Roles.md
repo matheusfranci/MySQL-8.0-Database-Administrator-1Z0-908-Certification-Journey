@@ -12,8 +12,8 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON mydb.* TO 'admin_role';
 -- Atribuir a role ao usuário
 GRANT 'admin_role' TO 'admin_user'@'localhost';
 
--- Definir a role como padrão
-SET DEFAULT ROLE 'admin_role' TO 'admin_user'@'localhost';
+-- Após a criação de uma role é necessária a atiavação da mesma
+SET ROLE 'admin_role';
 
 -- Recarregar os privilégios
 FLUSH PRIVILEGES;
