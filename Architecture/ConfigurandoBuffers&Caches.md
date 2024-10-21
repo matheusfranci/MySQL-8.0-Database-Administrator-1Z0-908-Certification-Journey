@@ -6,11 +6,11 @@ A configuração adequada de buffers e caches no MySQL é essencial para otimiza
 
 - **`query_cache_size`:**
   O `query_cache_size` determina a quantidade de memória alocada para armazenar os resultados de consultas. Se o cache estiver ativado, o MySQL retornará resultados armazenados em cache em vez de executar a consulta novamente.
-  ```ini
-  [mysqld]
-  query_cache_type = 1        # Ativar cache de consultas
-  query_cache_size = 1048576  # Tamanho do cache (1 MB)
-  ```
+```ini
+[mysqld]
+query_cache_type = 1        # Ativar cache de consultas
+query_cache_size = 1048576  # Tamanho do cache (1 MB)
+```
 
 ## 2. Buffers
 - **`innodb_buffer_pool_size`:**
@@ -30,7 +30,27 @@ innodb_log_buffer_size = 16M
 
 - **`innodb_undo_tablespaces`:**
 Este parâmetro permite que você configure múltiplos tablespaces de undo, o que pode ajudar no gerenciamento do espaço em disco e melhorar o desempenho.
- ```ini
+```ini
 [mysqld]
 innodb_undo_tablespaces = 2
 ```
+
+## 4. Cache de Tabelas
+- **`table_open_cache`:**
+O table_open_cache determina quantas tabelas podem ser abertas simultaneamente. Um valor maior pode ajudar a melhorar o desempenho em sistemas com muitas tabelas.
+```ini
+[mysqld]
+table_open_cache = 400
+```
+
+## 5. Cache de Conexões
+- **`thread_cache_size`:**
+O thread_cache_size controla o número de threads que podem ser mantidas em cache. Isso pode reduzir a sobrecarga de criação de novas threads para conexões.
+```ini
+[mysqld]
+thread_cache_size = 8
+```
+
+## 6. Análise e Monitoramento
+- **`Monitoramento do Uso de Memória`:**
+- Use comandos como SHOW STATUS LIKE 'Qcache%' para verificar o uso do cache de consultas e SHOW ENGINE INNODB STATUS para informações sobre o buffer pool do InnoDB.
