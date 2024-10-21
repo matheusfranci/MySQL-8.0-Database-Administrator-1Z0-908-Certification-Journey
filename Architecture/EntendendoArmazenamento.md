@@ -129,6 +129,6 @@ CREATE TABLE compressed_table (
 ) ENGINE=InnoDB ROW_FORMAT=COMPRESSED;
 ```
 
-##Considerações:
+## Considerações:
 - A compressão pode melhorar o desempenho em cenários de leitura pesada, mas pode introduzir sobrecarga em sistemas com muitas gravações, já que os dados precisam ser descomprimidos e recomprimidos em cada operação.
 - É importante testar o impacto da compressão em um ambiente de desenvolvimento antes de aplicá-la em produção, especialmente em sistemas com muitas transações de escrita.
