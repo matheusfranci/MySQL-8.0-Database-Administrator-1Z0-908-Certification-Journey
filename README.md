@@ -43,13 +43,6 @@ Este repositório é dedicado a documentar meu caminho de estudo para o exame de
 - Monitor database growth and explain capacity planning
 - Troubleshoot problems with locked resources
   
-***Query Optimization***
-
-- Examine how MySQL optimizes queries
-- Analyze queries with MySQL Enterprise Monitor
-- Create indexes to improve server performance
-- Monitor and understand index statistics
-  
 ***Backups and Recovery***
 
 - Distinguish between the different types of backup
