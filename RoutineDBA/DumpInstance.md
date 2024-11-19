@@ -24,7 +24,7 @@ Insira o scrit abaixo e salve
 #configurações do Banco de Dados
 DB_HOST="localhost"          # Endereço do servidor MySQL
 DB_USER="root"               # Usuário do MySQL
-DB_PASS="230319Mf!"          # Senha do usuário MySQL
+DB_PASS="********"          # Senha do usuário MySQL
 DB_PORT="3306"               # Porta do MySQL
 
 # Configurações de Backup
