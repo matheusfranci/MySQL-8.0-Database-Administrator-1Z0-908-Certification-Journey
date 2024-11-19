@@ -43,8 +43,7 @@ SET GLOBAL local_infile = 'ON';
 util.loadDump("/home/mat/util");
 ```
 
-***Observações:***
-Ele faz overwrite   
+***Observações:*** 
 Não precisei limpar o datadir ou parar o serviço do mysql   
 Há muitas options, inclusive de compressão e isolamento de bancos individuais, tabelas e outros objetos
 
