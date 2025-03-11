@@ -18,6 +18,17 @@ FROM
   INNER JOIN information_schema.innodb_trx r ON r.trx_id = w.requesting_engine_transaction_id;
 ```
 
+```sql
+SELECT r.trx_id AS waiting_trx_id, r.trx_mysql_thread_id AS waiting_thread, LEFT(r.trx_query, 20) AS waiting_query
+ , concat(concat(lw.lock_type, ' '), lw.lock_mode) AS waiting_for_lock
+ , b.trx_id AS blocking_trx_id, b.trx_mysql_thread_id AS blocking_thread, LEFT(b.trx_query, 20) AS blocking_query
+ , concat(concat(lb.lock_type, ' '), lb.lock_mode) AS blocking_lock
+FROM performance_schema.data_lock_waits w
+ INNER JOIN information_schema.innodb_trx b ON b.trx_id = w.BLOCKING_ENGINE_TRANSACTION_ID
+ INNER JOIN information_schema.innodb_trx r ON r.trx_id = w.REQUESTING_ENGINE_TRANSACTION_ID
+ INNER JOIN performance_schema.data_locks lw ON lw.ENGINE_TRANSACTION_ID = r.trx_id
+ INNER JOIN performance_schema.data_locks lb ON lb.ENGINE_TRANSACTION_ID = b.trx_id;
+```
 ### Detalhes da Query
 
 1.  **Seleção de Colunas (`SELECT`)**:
