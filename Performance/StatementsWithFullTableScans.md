@@ -10,7 +10,7 @@ ORDER BY rows_examined DESC;
 ```
 ```sql
 SET @sys.statement_truncate_len = 1000;
-select distinct query from sys.statements_with_full_table_scans where db = 'sei-prod'
+select distinct query from sys.statements_with_full_table_scans where db = 'prod'
 ```
 
 ---
